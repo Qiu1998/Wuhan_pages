@@ -1,11 +1,18 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "vite.config.js",
-        "use": "@vercel/static-build",
-        "config": { "distDir": "dist" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "vite.config.js",  // 告诉 Vercel 这是一个 Vite 项目
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"  // 指定 Vite 的输出目录（默认是 `dist`）
       }
-    ]
-  }
-  
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "dist/index.html"  // 确保 SPA 路由正确回退
+    }
+  ]
+}
