@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 2,
   "builds": [
     {
       "src": "vite.config.js",
@@ -23,3 +23,4 @@
   ],
   "cleanUrls": true
 }
+
