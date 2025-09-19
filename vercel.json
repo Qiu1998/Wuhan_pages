@@ -1,18 +1,25 @@
 {
-  "version": 2,
+  "version": 3,
   "builds": [
     {
-      "src": "vite.config.js",  // 告诉 Vercel 这是一个 Vite 项目
+      "src": "vite.config.js",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"  // 指定 Vite 的输出目录（默认是 `dist`）
+        "distDir": "dist",
+        "cleanDistDir": true
       }
     }
   ],
   "routes": [
     {
-      "src": "/.*",
-      "dest": "dist/index.html"  // 确保 SPA 路由正确回退
+      "src": "/assets/(.*)",
+      "headers": { "cache-control": "public, max-age=31536000" }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "status": 200
     }
-  ]
+  ],
+  "cleanUrls": true
 }
